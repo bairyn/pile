@@ -179,5 +179,15 @@ module Pile
     end
 
     include Enumerable
+
+    # When used as an array, operates on the records.
+    def [](i)
+      records[i]
+    end
+
+    # When used as an array, operates on the records.
+    def []=(i, v)
+      records[i] = v
+    end
   end
 end
