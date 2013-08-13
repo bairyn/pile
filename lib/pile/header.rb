@@ -95,5 +95,17 @@ module Pile
     def eql?(other)
       self.aliases.eql?(other.aliases) && self.indices.eql?(other.indices) && self.csv.eql?(other.csv)
     end
+
+    # Enumerate the record after converting to an array with +to_a+.
+    def each
+      to_a.each
+    end
+
+    # Enumerate each column header.
+    def to_a
+      indices
+    end
+
+    include Enumerable
   end
 end

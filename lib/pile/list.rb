@@ -167,5 +167,17 @@ module Pile
     def eql?(other)
       self.header.eql?(other.aliases) && self.records.eql?(other.records)
     end
+
+    # Enumerate the list records after converting to an array with +to_a+.
+    def each
+      to_a.each
+    end
+
+    # Enumerate each record.  Note that the header is not returned.
+    def to_a
+      records
+    end
+
+    include Enumerable
   end
 end
