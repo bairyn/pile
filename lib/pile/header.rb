@@ -11,13 +11,13 @@ module Pile
   # For example, given a CSV file containing the following header followed by
   # multiple lines each containing a record,
   #
-  # "ID, Name, Address Line"
+  # "ID,Name,Address Line"
   #
   # The parsed array from this row can be passed to +initialize+ after the
   # +aliases+ hash, which can look like this, assuming +case_sensitive+ is
   # false:
   #
-  # {'id' => ['identity', '#'], 'address line' => ['address']}
+  # \{'id' => ['identity', '#'], 'address line' => ['address']\}
   class Header
     # Construct a 'Header' from a CSV-formatted line.
     def self.from_csv_row row, aliases = {}

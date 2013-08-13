@@ -39,10 +39,14 @@ module Pile
       header.send method, *args, &block
     end
 
+    # Retrieve a value in the record by its position, or by the column name.
+    # Aliases are recognized.
     def [](i)
       values[column_index i]
     end
 
+    # Set a value in the record by its position, or by the column name.
+    # Aliases are recognized.
     def []=(i, v)
       values[column_index i] = v
     end

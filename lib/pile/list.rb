@@ -128,8 +128,8 @@ module Pile
 
     # Map each record.
     #
-    # The +Header+ must be the same for each +Record+, but it can be changed if
-    # the same one is returned for each record.
+    # The +Header+ must be the same for each +Record+, but, unlike +map+, it
+    # can be changed if the same one is returned for each record.
     def map_records &block
       records.map &block
       header = records[0].header unless records.empty?
@@ -176,6 +176,12 @@ module Pile
     # Enumerate each record.  Note that the header is not returned.
     def to_a
       records
+    end
+
+    # Send everything that the +header+ object recognized to it.  Can be used
+    # for +column_index+, etc.
+    def method_missing method, *args, &block
+      header.send method, *args, &block
     end
 
     include Enumerable
