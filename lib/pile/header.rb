@@ -31,6 +31,11 @@ module Pile
     attr_writer :aliases
     def aliases= aliases
       @aliases_downcased = nil
+
+      # Ensure each value is an array; create a singleton array for each one
+      # that isn't.
+      @aliases = {}
+      aliases.each_pair {|k, v| @aliases[k] = v.kind_of?(Array) ? v : [v]}
       @aliases = aliases
     end
     def aliases
